@@ -1,0 +1,12 @@
+{
+  "name": "sudo",
+  "version": "0.1.0",
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-less": "~0.3.0",
+    "grunt-contrib-jade": "~0.3.1",
+    "grunt-reload": "~0.2.0",
+    "grunt-contrib-requirejs": "~0.3.1",
+    "grunt-clean": "~0.3.0"
+  }
+}

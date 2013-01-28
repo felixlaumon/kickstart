@@ -1,0 +1,7 @@
+dist/
+node_modules/
+tmp/
+
+*.css
+*.html
+.DS_Store
