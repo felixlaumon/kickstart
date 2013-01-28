@@ -1,5 +1,5 @@
 # Kickstart
-  Web App Development Accelerated (tm) since 2013
+> Web App Development Accelerated (tm) since 2013
 
 Uses:
 - Jade instead of HTML
