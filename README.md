@@ -22,3 +22,4 @@ Tools:
 
 - `grunt` - Compiles less files in /styles and jade files in /jade to /dist.app.css and index.html
 - `grunt prod` - Compiles and minify all CSS and JS files to /dist/app.min.js and /app.min.css
+- `grunt server` - Start a server at 9001 and auto reloads the page when any script/stylesheets/jade file is changed.

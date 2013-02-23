@@ -1,5 +1,14 @@
+var path = require('path');
+var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
+
+var folderMount = function folderMount(connect, point) {
+  return connect.static(path.resolve(point));
+};
+
 module.exports = function(grunt) {
   "use strict";
+
+  var watchedFiles = ['jade/**/*.jade', 'styles/**/*.less', 'scripts/**/*.js'];
 
   // Project configuration.
   grunt.initConfig({
@@ -43,17 +52,6 @@ module.exports = function(grunt) {
         }
       }
     },
-    watch:{
-      files:['jade/**/*.jade', 'styles/**/*.less', 'scripts/**/*.js'],
-      tasks:['default', 'reload']
-    },
-    reload: {
-      port: 6001,
-      proxy: {
-        host: 'localhost',
-        port: 7000
-      }
-    },
     requirejs: {
       compile: {
         options: {
@@ -71,7 +69,24 @@ module.exports = function(grunt) {
         dest: 'dist/app.min.js'
       }
     },
-    clean: ['tmp']
+    clean: ['tmp'],
+
+    connect: {
+      livereload: {
+        options: {
+          port: 9001,
+          middleware: function(connect, options) {
+            return [lrSnippet, folderMount(connect, '.')];
+          }
+        }
+      }
+    },
+    regarde: {
+      fred: {
+        files: watchedFiles,
+        tasks: ['default', 'livereload']
+      }
+    }
   });
 
   grunt.loadNpmTasks('grunt-contrib-less');
@@ -79,10 +94,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-reload');
+
+  grunt.loadNpmTasks('grunt-regarde');
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-livereload');
 
   // Default task(s).
   grunt.registerTask('default', ['jade:development', 'less:development']);
+  grunt.registerTask('server', ['livereload-start', 'connect', 'regarde']);
   grunt.registerTask('prod', ['clean', 'jade:production', 'less:production', 'requirejs', 'uglify']);
 };
