@@ -1,20 +1,22 @@
 # Kickstart
 > Web App Development Accelerated (tm) since 2013
 
-Uses:
-- Jade instead of HTML
-- LESS instead of CSS
+Languages:
+- Jade
+- LESS
+- JavaScript
+
+JavaScript Library
+- Lo-dash
+- Backbone
+- Zepto
 
 Tools:
-- Grunt
+- Grunt (requires >=0.4)
 - RequireJS
 - Uglify JS compressor
 - YUI CSS compressor
-
-JS Components:
-- Lo-dash
-- Zepto
-- Backbone
+- LiveReload
 
 ## Grunt commands
 

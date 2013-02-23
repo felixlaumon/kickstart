@@ -65,7 +65,7 @@ module.exports = function(grunt) {
         }
       }
     },
-    min: {
+    uglify: {
       dist: {
         src: ['scripts/require.js', 'tmp/app.js'],
         dest: 'dist/app.min.js'
@@ -77,10 +77,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-reload');
-  grunt.loadNpmTasks('grunt-clean');
 
   // Default task(s).
   grunt.registerTask('default', ['jade:development', 'less:development']);
-  grunt.registerTask('prod', ['clean', 'jade:production', 'less:production', 'requirejs', 'min']);
+  grunt.registerTask('prod', ['clean', 'jade:production', 'less:production', 'requirejs', 'uglify']);
 };
