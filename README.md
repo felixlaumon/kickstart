@@ -4,13 +4,13 @@ Kickstart is a starter template for building your next web app. It allows you to
 
 ## Installation
 
-Kickstart depends on Grunt (>0.4) and Bower.
+Kickstart depends on Grunt (>0.4) and Bower. Install them first if you don't have them.
 
     git clone https://github.com/felixlaumon/kickstart.git YOUR-APP-NAME
     cd YOUR-APP-NAME
-    npm install # This installs the grunt tasks
-    bower install # This installs Backbone, Lo-dash and Zepto
-    rm -rf .git; git init; # This is to start a new git repo for your app
+    npm install # Installs the grunt tasks
+    bower install # Installs Backbone, Lo-dash and Zepto
+    rm -rf .git; git init; # Start a new git repo for your app
 
 ## Usage
 
@@ -39,3 +39,8 @@ Put your .jade files in the `jade` folder. Running `grunt server` will convert t
 First uncomment the app.min.js and app.min.css files in `jade/includes/footer.jade` and `jade/includes/header.jade` respectively. Then comment out `dist/app.css` and `scripts/libs/requirejs/require.js`.
 
 Finally, run `grunt prod` to use the r.js optimizer on `scripts/main.js` and concatenates all its dependencies files. The concatenated file is then minified and saved to `dist/app.min.js` with UgilifyJS. The LESS and Jade files are also minified to `dist/app.css` and `index.html` respectively.
+
+## License
+
+Copyright 2013 Felix Lau (<felixlaumon@gmail.com>)
+Licensed under the MIT License
