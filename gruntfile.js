@@ -26,7 +26,7 @@ module.exports = function(grunt) {
 
     concat: {
       dist: {
-        src: ['scripts/require.js', 'tmp/app.js'],
+        src: ['scripts/libs/requirejs/require.js', 'tmp/app.js'],
         dest: 'dist/app.js'
       }
     },

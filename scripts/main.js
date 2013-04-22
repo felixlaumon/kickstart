@@ -19,9 +19,6 @@ require.config({
   }
 });
 
-require(['lodash', 'backbone', 'zepto'], function (_, Backbone, $) {
-  console.log('hello world');
-  console.assert(_);
-  console.assert(Backbone);
-  console.assert($);
+require(['views/AppView'], function (AppView) {
+  window.app = new AppView();
 });
