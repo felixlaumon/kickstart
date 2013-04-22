@@ -1,5 +1,7 @@
 {
-  "name": "name",
+  "name": "YOUR-APP-NAME",
+  "author": "YOUR-NAME",
+  "license": "BSD",
   "version": "0.1.0",
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -12,5 +14,8 @@
     "grunt-contrib-livereload": "~0.1.1",
     "grunt-regarde": "~0.1.1",
     "grunt-contrib-connect": "~0.1.2"
+  },
+  "repository": {
+    "type": "git",
   }
 }

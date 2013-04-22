@@ -1,4 +1,6 @@
 dist/
+scripts/libs/
+
 node_modules/
 tmp/
 

@@ -8,17 +8,29 @@ var folderMount = function folderMount(connect, point) {
 module.exports = function(grunt) {
   "use strict";
 
+  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-jade');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+
+  grunt.loadNpmTasks('grunt-regarde');
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-livereload');
+
   var watchedFiles = ['jade/**/*.jade', 'styles/**/*.less', 'scripts/**/*.js'];
 
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+
     concat: {
       dist: {
         src: ['scripts/require.js', 'tmp/app.js'],
         dest: 'dist/app.js'
       }
     },
+
     less: {
       development: {
         files: {
@@ -34,6 +46,7 @@ module.exports = function(grunt) {
         }
       }
     },
+
     jade: {
       development: {
         options: {
@@ -52,6 +65,7 @@ module.exports = function(grunt) {
         }
       }
     },
+
     requirejs: {
       compile: {
         options: {
@@ -63,12 +77,14 @@ module.exports = function(grunt) {
         }
       }
     },
+
     uglify: {
       dist: {
-        src: ['scripts/require.js', 'tmp/app.js'],
+        src: ['scripts/libs/requirejs/require.js', 'tmp/app.js'],
         dest: 'dist/app.min.js'
       }
     },
+
     clean: ['tmp'],
 
     connect: {
@@ -81,6 +97,7 @@ module.exports = function(grunt) {
         }
       }
     },
+
     regarde: {
       fred: {
         files: watchedFiles,
@@ -88,16 +105,6 @@ module.exports = function(grunt) {
       }
     }
   });
-
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-jade');
-  grunt.loadNpmTasks('grunt-contrib-requirejs');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-
-  grunt.loadNpmTasks('grunt-regarde');
-  grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-contrib-livereload');
 
   // Default task(s).
   grunt.registerTask('default', ['jade:development', 'less:development']);

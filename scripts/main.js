@@ -1,8 +1,9 @@
 require.config({
+  // No need to add .js to paths
   paths: {
-    'zepto': 'libs/zepto',
-    'backbone': 'libs/backbone',
-    'lodash': 'libs/lodash.underscore'
+    'zepto': 'libs/zepto/zepto',
+    'backbone': 'libs/backbone/backbone',
+    'lodash': 'libs/lodash/dist/lodash.backbone'
   },
   shim: {
     zepto: {
@@ -20,4 +21,7 @@ require.config({
 
 require(['lodash', 'backbone', 'zepto'], function (_, Backbone, $) {
   console.log('hello world');
+  console.assert(_);
+  console.assert(Backbone);
+  console.assert($);
 });
