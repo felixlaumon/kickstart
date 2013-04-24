@@ -1,6 +1,6 @@
 # Kickstart
 
-Kickstart is a starter template for building your next web app. It allows you to dive right into writing actual code. Kickstart uses Grunt and Bower and includes LiveReload, LESS, Jade, RequireJS, and JSHint.
+Kickstart is a front-end starter template for scaffolding your next web app. It allows you to dive right into writing actual code. Kickstart uses Grunt and Bower and includes LiveReload, LESS, Jade, RequireJS, and JSHint.
 
 ## Installation
 
@@ -11,6 +11,7 @@ Kickstart depends on Grunt (>0.4) and Bower. Install them first if you don't hav
     npm install # Installs the grunt tasks
     bower install # Installs Backbone, Lo-dash and Zepto
     rm -rf .git; git init; # Start a new git repo for your app
+    grunt server
 
 ## Usage
 
@@ -43,4 +44,5 @@ Finally, run `grunt prod` to use the r.js optimizer on `scripts/main.js` and con
 ## License
 
 Copyright 2013 Felix Lau (<felixlaumon@gmail.com>)
+
 Licensed under the MIT License
