@@ -1,5 +1,4 @@
 var path = require('path');
-var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
 
 var folderMount = function folderMount(connect, point) {
   return connect.static(path.resolve(point));
@@ -13,10 +12,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-
-  grunt.loadNpmTasks('grunt-regarde');
+  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-contrib-livereload');
 
   var watchedFiles = ['jade/**/*.jade', 'styles/**/*.less', 'scripts/**/*.js'];
 
@@ -92,22 +89,28 @@ module.exports = function(grunt) {
         options: {
           port: 9001,
           middleware: function(connect, options) {
-            return [lrSnippet, folderMount(connect, '.')];
+            return [
+              require('connect-livereload')(),
+              folderMount(connect, '.')
+            ];
           }
         }
       }
     },
 
-    regarde: {
-      fred: {
+    watch: {
+      scripts: {
         files: watchedFiles,
-        tasks: ['default', 'livereload']
-      }
+        tasks: ['default'],
+        options: {
+          livereload: true
+        },
+      },
     }
   });
 
   // Default task(s).
   grunt.registerTask('default', ['jade:development', 'less:development']);
-  grunt.registerTask('server', ['livereload-start', 'connect', 'regarde']);
+  grunt.registerTask('server', ['connect', 'watch']);
   grunt.registerTask('prod', ['clean', 'jade:production', 'less:production', 'requirejs', 'uglify']);
 };
